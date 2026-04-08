@@ -4,25 +4,159 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>El Faro - Inicio</title>
+
   <style>
-    body { font-family: system-ui, Arial, sans-serif; margin: 0; line-height: 1.5; }
-    header, nav, footer { padding: 12px 16px; }
-    header { display: flex; align-items: center; gap: 12px; background: #0d1b2a; color: #fff; }
-    header img { height: 48px; width: 48px; object-fit: contain; }
-    nav { background: #e5eaf0; display: flex; gap: 16px; }
-    nav a { text-decoration: none; color: #0d1b2a; font-weight: 600; }
-    main { padding: 16px; max-width: 1100px; margin: auto; }
-    h1, h2, h3 { margin: 0.2em 0 0.4em; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-    th, td { border: 1px solid #cfd8dc; padding: 8px; text-align: left; vertical-align: top; }
-    th { background: #f5f7fa; }
-    article { margin-top: 16px; }
-    .media { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; }
-    footer { background: #0d1b2a; color: #fff; text-align: center; }
-    .categoria { font-size: 0.9rem; color: #546e7a; margin: 0; }
+    /* =========================
+       Estilos base del sitio
+       ========================= */
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    header, nav, footer {
+      padding: 12px 16px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #0d1b2a;
+      color: #fff;
+    }
+
+    header img {
+      height: 48px;
+      width: 48px;
+      object-fit: contain;
+    }
+
+    nav {
+      background: #e5eaf0;
+      display: flex;
+      gap: 16px;
+    }
+
+    main {
+      padding: 16px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h1, h2, h3 {
+      margin: 0.2em 0 0.4em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+
+    th, td {
+      border: 1px solid #cfd8dc;
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f5f7fa;
+    }
+
+    article {
+      margin-top: 16px;
+    }
+
+    .media {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .categoria {
+      font-size: 0.9rem;
+      color: #546e7a;
+      margin: 0;
+    }
+
+    /* =========================================================
+       (6) ESTILOS DE ENLACES
+       - Normal: subrayado
+       - Hover: negrita + sin subrayado
+       (Requisito del enunciado)
+       ========================================================= */
+    a {
+      text-decoration: underline; /* Mantener subrayado normalmente */
+      color: inherit;
+    }
+
+    a:hover {
+      font-weight: 700;          /* Negrita al pasar el cursor */
+      text-decoration: none;     /* Quitar subrayado en hover */
+    }
+
+    /* Mantener legibilidad en navegación (sin romper el requisito 6) */
+    nav a {
+      color: #0d1b2a;
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       (4) HOVER EN BLOQUES
+       En este index hay 2 tipos de “bloques”:
+       - Filas de tabla (noticias)
+       - Artículos (video/audio)
+       Al pasar el mouse: fondo negro + texto blanco
+       ========================================================= */
+
+    /* Filas de la tabla como bloques */
+    tbody tr {
+      transition: background-color .2s ease, color .2s ease;
+    }
+
+    tbody tr:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+    tbody tr:hover td {
+      color: #fff;
+    }
+
+    /* Artículos de la sección multimedia como bloques */
+    .media article {
+      padding: 12px;
+      border-radius: 10px;
+      transition: background-color .2s ease, color .2s ease;
+    }
+
+    .media article:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .media article:hover a {
+      color: #fff;
+    }
+
+    /* =========================================================
+       (5) FOOTER CON ESTILO SOLICITADO
+       Fondo: #c9d2d0
+       Texto: #31231e
+       ========================================================= */
+    footer {
+      background-color: #c9d2d0;
+      color: #31231e;
+      text-align: center;
+      padding: 12px 16px;
+    }
   </style>
 </head>
+
 <body>
   <header>
     <img src="assets/logo.png" alt="Logotipo El Faro" />
@@ -72,10 +206,10 @@
       </table>
     </section>
 
-    <!-- Video + Audio requeridos en la sección de artículos -->
-    <section class="media" aria-labelledby="tit-media">
+    <!-- Video + Audio requeridos -->
+    <section class="media" aria-label="Multimedia destacada">
       <article>
-        <h3 id="tit-media">Video destacado</h3>
+        <h3>Video destacado</h3>
         <video controls width="100%" poster="assets/logo.png" preload="metadata">
           <source src="assets/video.mp4" type="video/mp4" />
           <p>Tu navegador no soporta video HTML5. Puedes <a href="assets/video.mp4">descargar el video</a>.</p>
@@ -83,18 +217,21 @@
       </article>
 
       <article>
-  <h3>Podcast / Audio del día</h3>
-  <audio controls preload="metadata" style="width:100%">
-    Activos/audio.m4a
-    <p>Tu navegador no soporta audio HTML5. 
-       Activos/audio.m4aDescargar audio</a>.
-    </p>
-  </audio>
-</article>
-
+        <h3>Podcast / Audio del día</h3>
+        <audio controls preload="metadata" style="width:100%">
+          <source src="Activos/audio.m4a" type="audio/mp4" />
+          <p>
+            Tu navegador no soporta audio HTML5.
+            Puedes <a href="Activos/audio.m4a">descargar el audio</a>.
+          </p>
+        </audio>
+      </article>
+    </section>
+  </main>
 
   <footer>
     <small>Periódico El Faro — 2026</small>
   </footer>
 </body>
 </html>
+``
