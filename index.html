@@ -167,29 +167,29 @@
     
     .grid {
       display: grid;
-      grid-template-comlumms: repeat(auto-fit, minmax(250px, 1fr));  
+      grid-template-comlumms: 
+        repeat(auto-fit, minmax(250px, 1fr));  
       gap: 24px;
-      
+    }
   </style>
 </head>
   <script>
       function actualizarFechahora() {
   const ahora = New Date();
 
-  const opcionesfecha = {
+  const fecha = ahora.tolocaleDateString('es-CL, {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
   day: 'numeric
   
-};
-  const fecha = ahora.tolocaledatestring('es-CL' opcionesfecha);
+});
   const hora = ahora.tolocaltimestring('es-CL');
 
-        document.getelementbyid("Fechahora").textcontent = '${fecha} = ${hora}';
+        document.getElementById("fechahora").textcontent = fecha + " - " + hora;
       }
 
-    setinterval(actualizarFechahora, 1000);
+    setInterval(actualizarFechahora, 1000);
 
     actualizarFechahora();
   </script>
