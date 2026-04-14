@@ -174,6 +174,28 @@
   <p id="Fechahora"></p>  
 </head>
 
+  <script>
+      function actualizarfechahora() {
+  const ahora = New Date();
+
+  const opcionesfecha = {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric
+  
+};
+  const fecha = ahora.tolocaledatestring('es-CL' opcionesfecha);
+  const hora = ahora.tolocaltimestring('es-CL');
+
+        document.getelementbyid("fechahora").textcontent = '${fecha} = ${hora}';
+      }
+
+    setinterval(actualizarfechahora, 1000);
+
+    actualizarfechahora();
+  </script>
+
 <body>
   <header>
     <img src="assets/logo.png" alt="Logotipo El Faro" />
