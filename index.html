@@ -4,7 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>El Faro - Inicio</title>
-
+    <!-- Implementacion de la fecha y hora en la cabecera -->
+  <p id="Fechahora"></p>  
+  
   <!-- Tipografia nueva "carter one"-->
   <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
   <style>
@@ -169,13 +171,9 @@
       gap: 24px;
       
   </style>
-  
-  <!-- Implementacion de la fecha y hora en la cabecera -->
-  <p id="Fechahora"></p>  
 </head>
-
   <script>
-      function actualizarfechahora() {
+      function actualizarFechahora() {
   const ahora = New Date();
 
   const opcionesfecha = {
@@ -188,12 +186,12 @@
   const fecha = ahora.tolocaledatestring('es-CL' opcionesfecha);
   const hora = ahora.tolocaltimestring('es-CL');
 
-        document.getelementbyid("fechahora").textcontent = '${fecha} = ${hora}';
+        document.getelementbyid("Fechahora").textcontent = '${fecha} = ${hora}';
       }
 
-    setinterval(actualizarfechahora, 1000);
+    setinterval(actualizarFechahora, 1000);
 
-    actualizarfechahora();
+    actualizarFechahora();
   </script>
 
 <body>
