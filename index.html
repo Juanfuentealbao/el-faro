@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>El Faro - Inicio</title>
 
-<div id="FechaHora" class="fecha-hora"></div>
-</header>
-  
   <!-- Tipografia nueva "carter one"-->
   <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
   <style>
@@ -21,7 +18,7 @@
       background-color: #f5f5f5; /*implementacion de fondo "gris"*/
     }
 
-    .fech-hora{
+    .fecha-hora{
       margin-left: auto;        /*Implementacion de la fecha y hora */
       font-size: 14px;
       text-aligm: right;
@@ -186,22 +183,21 @@
     <div>
       <h1>El Faro</h1>
       <p style="margin:0">Periódico local</p>
-    </div>
+   <div id="fechaHora" class="fecha-hora"></div>
   </header>
    <script>                                                       /*funciones del reloj con javascript*/
       function actualizarFechahora() {
-  const ahora = New Date();
+  const ahora = new Date();
 
-  const fecha = ahora.tolocaleDateString('es-CL, {
+  const fecha = ahora.toLocaleDateString('es-CL, {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
-  day: 'numeric
-  
+  day: 'numeric'
 });
-  const hora = ahora.tolocaltimestring('es-CL');
+  const hora = ahora.toLocaltimeString('es-CL');
 
-        document.getElementById("fechahora").textcontent = fecha + " - " + hora;
+        document.getElementById("fechahora").textContent = fecha + " - " + hora;
       }
 
     setInterval(actualizarFechahora, 1000);
