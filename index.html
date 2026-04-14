@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>El Faro - Inicio</title>
 
-<div id="FechaHora" style="margin-left:auto; font-size:14px;"></div>
+<div id="FechaHora" class="fecha-hora"></div>
+</header>
   
   <!-- Tipografia nueva "carter one"-->
   <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
@@ -20,6 +21,12 @@
       background-color: #f5f5f5; /*implementacion de fondo "gris"*/
     }
 
+    .fech-hora{
+      margin-left: auto;        /*Implementacion de la fecha y hora */
+      font-size: 14px;
+      text-aligm: right;
+    }
+    
     header, nav, footer {
       padding: 12px 16px;
     }
@@ -173,7 +180,15 @@
     }
   </style>
 </head>
-  <script>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Logotipo El Faro" />
+    <div>
+      <h1>El Faro</h1>
+      <p style="margin:0">Periódico local</p>
+    </div>
+  </header>
+   <script>                                                       /*funciones del reloj con javascript*/
       function actualizarFechahora() {
   const ahora = New Date();
 
@@ -193,16 +208,7 @@
 
     actualizarFechahora();
   </script>
-
-<body>
-  <header>
-    <img src="assets/logo.png" alt="Logotipo El Faro" />
-    <div>
-      <h1>El Faro</h1>
-      <p style="margin:0">Periódico local</p>
-    </div>
-  </header>
-
+  
   <nav aria-label="Navegación principal">
     <a href="index.html" aria-current="page">Inicio</a>
     <a href="deporte.html">Deporte</a>
