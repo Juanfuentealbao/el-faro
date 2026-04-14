@@ -183,6 +183,7 @@
     <div>
       <h1>El Faro</h1>
       <p style="margin:0">Periódico local</p>
+    </div>
       
    <div id="fechaHora" class="fecha-hora"></div>
   </header>
@@ -256,13 +257,13 @@
       function actualizarFechahora() {
   const ahora = new Date();
 
-  const fecha = ahora.toLocaleDateString('es-CL, {
+  const fecha = ahora.toLocaleDateString('es-CL', {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
   day: 'numeric'
 });
-  const hora = ahora.toLocaltimeString('es-CL');
+  const hora = ahora.toLocaleTimeString('es-CL');
 
         document.getElementById("fechahora").textContent = fecha + " - " + hora;
       }
