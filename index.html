@@ -21,7 +21,7 @@
     .fecha-hora{
       margin-left: auto;        /*Implementacion de la fecha y hora */
       font-size: 14px;
-      text-aligm: right;
+      text-align: right;
     }
     
     header, nav, footer {
@@ -183,28 +183,9 @@
     <div>
       <h1>El Faro</h1>
       <p style="margin:0">Periódico local</p>
+      
    <div id="fechaHora" class="fecha-hora"></div>
   </header>
-   <script>                                                       /*funciones del reloj con javascript*/
-      function actualizarFechahora() {
-  const ahora = new Date();
-
-  const fecha = ahora.toLocaleDateString('es-CL, {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-});
-  const hora = ahora.toLocaltimeString('es-CL');
-
-        document.getElementById("fechahora").textContent = fecha + " - " + hora;
-      }
-
-    setInterval(actualizarFechahora, 1000);
-
-    actualizarFechahora();
-  </script>
-  
   <nav aria-label="Navegación principal">
     <a href="index.html" aria-current="page">Inicio</a>
     <a href="deporte.html">Deporte</a>
@@ -271,6 +252,26 @@
   <footer>
     <small>Periódico El Faro — 2026</small>
   </footer>
+  <script>                                                       /*funciones del reloj con javascript*/
+      function actualizarFechahora() {
+  const ahora = new Date();
+
+  const fecha = ahora.toLocaleDateString('es-CL, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+  const hora = ahora.toLocaltimeString('es-CL');
+
+        document.getElementById("fechahora").textContent = fecha + " - " + hora;
+      }
+
+    setInterval(actualizarFechahora, 1000);
+
+    actualizarFechahora();
+  </script>
+  
 </body>
 </html>
 ``
