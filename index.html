@@ -79,7 +79,7 @@
       margin-top: 16px;
       background: #fff;  /*implementamos los bordes blancos a los articulos*/
       padding: 16px;
-      boder-radius: 8px;
+      border-radius: 8px;
     }
 
     .media {
@@ -171,7 +171,7 @@
     
     .grid {
       display: grid;
-      grid-template-comlumms: 
+      grid-template-comlumns: 
         repeat(auto-fit, minmax(250px, 1fr));  
       gap: 24px;
     }
@@ -265,7 +265,7 @@
 });
   const hora = ahora.toLocaleTimeString('es-CL');
 
-        document.getElementById("fechahora").textContent = fecha + " - " + hora;
+        document.getElementById("fechaHora").textContent = fecha + " - " + hora;
       }
 
     setInterval(actualizarFechahora, 1000);
