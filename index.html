@@ -184,8 +184,9 @@
       <h1>El Faro</h1>
       <p style="margin:0">Periódico local</p>
     </div>
-      
-   <div id="fechaHora" class="fecha-hora"></div>
+
+    <!-- Implementacion de la fecha y hora -->
+   <div id="fechaHora" class="fecha-hora"></div>  
   </header>
   <nav aria-label="Navegación principal">
     <a href="index.html" aria-current="page">Inicio</a>
@@ -198,6 +199,14 @@
       <h2 id="tit-noticias">Noticias generales</h2>
       <p class="categoria">Últimas novedades locales</p>
 
+      <h3>Agregar nuevo artículo</h3>
+      <input type="text" id="titulo" placeholder="Título del artículo"><br><br>
+      
+      <textarea id="descripcion" placeholder="Descripción del artículo"></textarea><br><br>
+      
+      <button onclick="agregarArticulo()">Agregar artículo</button>
+
+      <div id="listaArticulos"></div>
       <!-- Tabla con al menos 3 noticias -->
       <table>
         <thead>
@@ -228,7 +237,7 @@
     </section>
 
     <!-- Video + Audio requeridos --> 
-    <section class="grid" aria-label="Multimedia destacada">     <!-- Cambiamos media por grid-->
+    <section class="grid" aria-label="Multimedia destacada">  <!-- Cambiamos media por grid-->
       <article>
         <h3>Video destacado</h3>
         <video controls width="100%" poster="assets/logo.png" preload="metadata">
