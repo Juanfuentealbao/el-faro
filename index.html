@@ -282,8 +282,9 @@
     actualizarFechahora();
   </script>
 
-  /*modificacion 3 y 4 */
-
+ /*  =============================
+  se agrega 3. Incorporar un formulario de contacto y 4. En todas las secciones de artículos que existan debe haber un contador de artículos.
+  =============================  */
   <script>
 /* =====================================================
    (1) FECHA Y HORA EN VIVO (con segundos)
@@ -300,8 +301,10 @@ function actualizarFechahora() {
 
   const hora = ahora.toLocaleTimeString('es-CL');
 
-  document.getElementById("fechaHora").textContent =
-    fecha + " - " + hora;
+  const contenedor = document.getElementById("fechaHora");
+  if (contenedor) {
+    contenedor.textContent = fecha + " - " + hora;
+  }
 }
 
 setInterval(actualizarFechahora, 1000);
@@ -314,8 +317,18 @@ actualizarFechahora();
 let totalArticulos = 0;
 
 function agregarArticulo() {
-  const titulo = document.getElementById("titulo").value;
-  const descripcion = document.getElementById("descripcion").value;
+  const tituloInput = document.getElementById("titulo");
+  const descripcionInput = document.getElementById("descripcion");
+  const lista = document.getElementById("listaArticulos");
+  const contador = document.getElementById("contadorArticulos");
+
+  if (!tituloInput || !descripcionInput || !lista || !contador) {
+    console.error("Faltan elementos HTML para artículos dinámicos.");
+    return;
+  }
+
+  const titulo = tituloInput.value.trim();
+  const descripcion = descripcionInput.value.trim();
 
   if (titulo === "" || descripcion === "") {
     alert("Debe completar todos los campos del artículo.");
@@ -328,31 +341,42 @@ function agregarArticulo() {
     <p>${descripcion}</p>
   `;
 
-  document.getElementById("listaArticulos").appendChild(articulo);
+  lista.appendChild(articulo);
 
   totalArticulos++;
-  document.getElementById("contadorArticulos").textContent = totalArticulos;
+  contador.textContent = totalArticulos;
 
-  document.getElementById("titulo").value = "";
-  document.getElementById("descripcion").value = "";
+  tituloInput.value = "";
+  descripcionInput.value = "";
 }
 
 
 /* =====================================================
    (3) FORMULARIO DE CONTACTO
    ===================================================== */
-document.getElementById("form-contacto").addEventListener("submit", function(e) {
-  e.preventDefault();
+const formularioContacto = document.getElementById("form-contacto");
 
-  const nombre = document.getElementById("nombreContacto").value;
-  const mensaje = document.getElementById("mensajeContacto").value;
+if (formularioContacto) {
+  formularioContacto.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  alert("Gracias " + nombre + ", tu mensaje fue enviado correctamente.");
+    const nombre = document.getElementById("nombreContacto").value.trim();
+    const mensaje = document.getElementById("mensajeContacto").value.trim();
 
-  this.reset();
-});
+    if (nombre === "" || mensaje === "") {
+      alert("Debe completar todos los campos del formulario de contacto.");
+      return;
+    }
+
+    alert("Gracias " + nombre + ", tu mensaje fue enviado correctamente.");
+
+    this.reset();
+  });
+} else {
+  console.warn("Formulario de contacto no encontrado en el HTML.");
+}
 </script>
-
+``
   
 </body>
 </html>
