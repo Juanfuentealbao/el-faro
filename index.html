@@ -171,7 +171,7 @@
     
     .grid {
       display: grid;
-      grid-template-comlumns: 
+      grid-template-columns: 
         repeat(auto-fit, minmax(250px, 1fr));  
       gap: 24px;
     }
@@ -206,6 +206,11 @@
       
       <button onclick="agregarArticulo()">Agregar artículo</button>
 
+      <p>
+  Total de artículos publicados:
+  <strong><span id="contadorArticulos">0</span></strong>
+      </p>
+      
       <div id="listaArticulos"></div>
       <!-- Tabla con al menos 3 noticias -->
       <table>
@@ -257,6 +262,31 @@
         </audio>
       </article>
     </section>
+
+    <section id="contacto">
+  <h2>Contacto</h2>
+
+  <form id="form-contacto">
+    <input
+      type="text"
+      id="nombreContacto"
+      placeholder="Nombre"
+      required
+    >
+    <br><br>
+
+    <textarea
+      id="mensajeContacto"
+      placeholder="Mensaje"
+      required
+    ></textarea>
+    <br><br>
+
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+    
   </main>
 
   <footer>
@@ -282,12 +312,9 @@
     actualizarFechahora();
   </script>
 
- /*  =============================
-  se agrega 3. Incorporar un formulario de contacto y 4. En todas las secciones de artículos que existan debe haber un contador de artículos.
-  =============================  */
-  <script>
+<script>
 /* =====================================================
-   (1) FECHA Y HORA EN VIVO (con segundos)
+   (1) FECHA Y HORA EN VIVO
    ===================================================== */
 function actualizarFechahora() {
   const ahora = new Date();
@@ -301,9 +328,9 @@ function actualizarFechahora() {
 
   const hora = ahora.toLocaleTimeString('es-CL');
 
-  const contenedor = document.getElementById("fechaHora");
-  if (contenedor) {
-    contenedor.textContent = fecha + " - " + hora;
+  const fh = document.getElementById("fechaHora");
+  if (fh) {
+    fh.textContent = fecha + " - " + hora;
   }
 }
 
@@ -317,18 +344,10 @@ actualizarFechahora();
 let totalArticulos = 0;
 
 function agregarArticulo() {
-  const tituloInput = document.getElementById("titulo");
-  const descripcionInput = document.getElementById("descripcion");
+  const titulo = document.getElementById("titulo").value.trim();
+  const descripcion = document.getElementById("descripcion").value.trim();
   const lista = document.getElementById("listaArticulos");
   const contador = document.getElementById("contadorArticulos");
-
-  if (!tituloInput || !descripcionInput || !lista || !contador) {
-    console.error("Faltan elementos HTML para artículos dinámicos.");
-    return;
-  }
-
-  const titulo = tituloInput.value.trim();
-  const descripcion = descripcionInput.value.trim();
 
   if (titulo === "" || descripcion === "") {
     alert("Debe completar todos los campos del artículo.");
@@ -336,48 +355,41 @@ function agregarArticulo() {
   }
 
   const articulo = document.createElement("article");
-  articulo.innerHTML = `
-    <h3>${titulo}</h3>
-    <p>${descripcion}</p>
-  `;
-
+  articulo.innerHTML = `<h3>${titulo}</h3><p>${descripcion}</p>`;
   lista.appendChild(articulo);
 
   totalArticulos++;
   contador.textContent = totalArticulos;
 
-  tituloInput.value = "";
-  descripcionInput.value = "";
+  document.getElementById("titulo").value = "";
+  document.getElementById("descripcion").value = "";
 }
 
 
 /* =====================================================
    (3) FORMULARIO DE CONTACTO
    ===================================================== */
-const formularioContacto = document.getElementById("form-contacto");
+const formContacto = document.getElementById("form-contacto");
 
-if (formularioContacto) {
-  formularioContacto.addEventListener("submit", function (e) {
+if (formContacto) {
+  formContacto.addEventListener("submit", function(e) {
     e.preventDefault();
 
     const nombre = document.getElementById("nombreContacto").value.trim();
     const mensaje = document.getElementById("mensajeContacto").value.trim();
 
     if (nombre === "" || mensaje === "") {
-      alert("Debe completar todos los campos del formulario de contacto.");
+      alert("Debe completar todos los campos del formulario.");
       return;
     }
 
     alert("Gracias " + nombre + ", tu mensaje fue enviado correctamente.");
-
     this.reset();
   });
-} else {
-  console.warn("Formulario de contacto no encontrado en el HTML.");
 }
 </script>
 ``
-  
+    
 </body>
 </html>
 ``
