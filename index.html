@@ -281,6 +281,78 @@
 
     actualizarFechahora();
   </script>
+
+  /*modificacion 3 y 4 */
+
+  <script>
+/* =====================================================
+   (1) FECHA Y HORA EN VIVO (con segundos)
+   ===================================================== */
+function actualizarFechahora() {
+  const ahora = new Date();
+
+  const fecha = ahora.toLocaleDateString('es-CL', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  const hora = ahora.toLocaleTimeString('es-CL');
+
+  document.getElementById("fechaHora").textContent =
+    fecha + " - " + hora;
+}
+
+setInterval(actualizarFechahora, 1000);
+actualizarFechahora();
+
+
+/* =====================================================
+   (2 y 4) ARTÍCULOS DINÁMICOS + CONTADOR
+   ===================================================== */
+let totalArticulos = 0;
+
+function agregarArticulo() {
+  const titulo = document.getElementById("titulo").value;
+  const descripcion = document.getElementById("descripcion").value;
+
+  if (titulo === "" || descripcion === "") {
+    alert("Debe completar todos los campos del artículo.");
+    return;
+  }
+
+  const articulo = document.createElement("article");
+  articulo.innerHTML = `
+    <h3>${titulo}</h3>
+    <p>${descripcion}</p>
+  `;
+
+  document.getElementById("listaArticulos").appendChild(articulo);
+
+  totalArticulos++;
+  document.getElementById("contadorArticulos").textContent = totalArticulos;
+
+  document.getElementById("titulo").value = "";
+  document.getElementById("descripcion").value = "";
+}
+
+
+/* =====================================================
+   (3) FORMULARIO DE CONTACTO
+   ===================================================== */
+document.getElementById("form-contacto").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const nombre = document.getElementById("nombreContacto").value;
+  const mensaje = document.getElementById("mensajeContacto").value;
+
+  alert("Gracias " + nombre + ", tu mensaje fue enviado correctamente.");
+
+  this.reset();
+});
+</script>
+
   
 </body>
 </html>
