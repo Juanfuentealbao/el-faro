@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>El Faro - Inicio</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bul
 
   <!-- Tipografia nueva "carter one"-->
   <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
@@ -17,6 +19,10 @@
       line-height: 1.5;
       background-color: #f5f5f5; /*implementacion de fondo "gris"*/
     }
+
+    <div class="notification is-warning has-text-centered">
+  🟡 Aviso Importante: Información en desarrollo – El Faro
+</div>
 
     .fecha-hora{
       margin-left: auto;        /*Implementacion de la fecha y hora */
@@ -195,6 +201,39 @@
   </nav>
 
   <main>
+    <section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <!-- NOTICIA PRINCIPAL -->
+      <div class="column is-8">
+        <article class="box">
+          <h2>Noticia Principal del Día</h2>
+          <p class="categoria">Destacado</p>
+          <p>
+            Esta es la noticia más reciente e importante del sitio El Faro,
+            presentada de forma destacada según los nuevos requerimientos.
+          </p>
+        </article>
+      </div>
+
+      <!-- NOTICIAS SECUNDARIAS -->
+      <div class="column is-4">
+        <article class="box">
+          <h3>Noticia secundaria 1</h3>
+        </article>
+        <article class="box">
+          <h3>Noticia secundaria 2</h3>
+        </article>
+        <article class="box">
+          <h3>Noticia secundaria 3</h3>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
     <section aria-labelledby="tit-noticias">
       <h2 id="tit-noticias">Noticias generales</h2>
       <p class="categoria">Últimas novedades locales</p>
@@ -290,8 +329,11 @@
   </main>
 
   <footer>
-    <small>Periódico El Faro — 2026</small>
-  </footer>
+  <p><strong>El Faro</strong> — Periódico Digital Local</p>
+  <p>Actualidad · Deporte · Negocios · Cultura</p>
+  <p>Contacto · Aviso Legal · Redes Sociales</p>
+  <small>© 2026 — Todos los derechos reservados
+    
   <script>                                                       /*funciones del reloj con javascript*/
       function actualizarFechahora() {
   const ahora = new Date();
